@@ -1,4 +1,10 @@
 <?php
+    /**
+     * Copyright (c) 2017.
+     *
+     * Daniel Rona
+     */
+
     namespace Danielrona\Toolbox;
 
 

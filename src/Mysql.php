@@ -1,4 +1,10 @@
 <?php
+    /**
+     * Copyright (c) 2017.
+     *
+     * Daniel Rona
+     */
+
     namespace Danielrona\Toolbox;
 
 
@@ -63,13 +69,15 @@
             return $this->dbh->lastInsertId();
         }
 
+
         /**
          * @param      $query
          * @param null $params
+         * @param bool $multiple
          *
-         * @return array|string
+         * @return array|mixed|string
          */
-        public function readQuery($query, $params=null, $multiple=true)
+        public function readQuery($query, $params = null, $multiple = true)
         {
             try {
                 $sth = $this->dbh->prepare($query);
@@ -88,6 +96,7 @@
                     )
                 );
             }
+
             return $result;
         }
 
@@ -97,7 +106,7 @@
          *
          * @return string
          */
-        public function createQuery($query, $params=null)
+        public function createQuery($query, $params = null)
         {
             try {
                 $sth = $this->dbh->prepare($query);
@@ -111,6 +120,7 @@
                     )
                 );
             }
+
             return $result;
         }
 
@@ -120,7 +130,7 @@
          *
          * @return int|string
          */
-        public function updateQuery($query, $params=null)
+        public function updateQuery($query, $params = null)
         {
             try {
                 $sth = $this->dbh->prepare($query);
@@ -134,6 +144,7 @@
                     )
                 );
             }
+
             return $result;
         }
 

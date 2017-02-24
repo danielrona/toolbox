@@ -1,9 +1,8 @@
 <?php
     /**
-     * Created by PhpStorm.
-     * User: drona
-     * Date: 19.02.2017
-     * Time: 13:19
+     * Copyright (c) 2017.
+     *
+     * Daniel Rona
      */
 
     namespace Danielrona\Toolbox;
@@ -14,7 +13,7 @@
         public function testConfig()
         {
             $config = new Config;
-            $this->assertNull($config->set('test','test'));
-            $this->assertStringStartsWith('test',$config->get('test'));
+            $this->assertNull($config->set('test', 'test'));
+            $this->assertStringStartsWith('test', $config->get('test'));
         }
     }
