@@ -69,12 +69,16 @@
          *
          * @return array|string
          */
-        public function readQuery($query, $params=null)
+        public function readQuery($query, $params=null, $multiple=true)
         {
             try {
                 $sth = $this->dbh->prepare($query);
                 $sth->execute($params);
-                $result = $sth->fetchAll(\PDO::FETCH_OBJ);
+                if ($multiple == true) {
+                    $result = $sth->fetchAll(\PDO::FETCH_OBJ);
+                } else {
+                    $result = $sth->fetch(\PDO::FETCH_OBJ);
+                }
             } catch (\PDOException $e) {
                 // handle exceptions
                 $result = json_encode(
