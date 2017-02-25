@@ -62,15 +62,6 @@
         }
 
         /**
-         * @return string
-         */
-        public function getId()
-        {
-            return $this->dbh->lastInsertId();
-        }
-
-
-        /**
          * @param      $query
          * @param null $params
          * @param bool $multiple

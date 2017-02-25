@@ -14,7 +14,21 @@
      */
     class Config
     {
+        private static $instance; // handle of options
         static $confArray;
+
+        /**
+         * @return mixed
+         */
+        public static function getInstance()
+        {
+            if (!isset(self::$instance)) {
+                $object = __CLASS__;
+                self::$instance = new $object;
+            }
+
+            return self::$instance;
+        }
 
         /**
          * @param $name
