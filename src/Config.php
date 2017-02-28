@@ -14,11 +14,11 @@
      */
     class Config
     {
-        private static $instance; // handle of options
         static $confArray;
+        private static $instance;
 
         /**
-         * @return mixed
+         * @return $this
          */
         public static function getInstance()
         {
@@ -33,7 +33,7 @@
         /**
          * @param $name
          *
-         * @return mixed
+         * @return string
          */
         public static function get($name)
         {
