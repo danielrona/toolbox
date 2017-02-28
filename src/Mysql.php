@@ -14,21 +14,18 @@
      */
     class Mysql
     {
-        private static $instance; // handle of the db connection
-        public $dbh; // make connection available
+        private static $instance;
+        public $dbh;
 
         private function __construct()
         {
-            // building data source name from config
             $dsn =
                 'mysql:host=' . Config::get('db.host') .
                 ';dbname=' . Config::get('db.name') .
                 ';port=' . Config::get('db.port') .
                 ';connect_timeout=' . Config::get('db.timeout') .
                 'charset=' . Config::get('db.charset');
-            // getting DB user from config
             $user = Config::get('db.user');
-            // getting DB password from config
             $password = Config::get('db.pass');
 
             try {
@@ -38,7 +35,6 @@
                     $this->dbh->exec('SET NAMES utf8;');
                 }
             } catch (\PDOException $e) {
-                // handle exceptions
                 echo json_encode(
                     array (
                         'code' => $e->getCode(),
@@ -49,7 +45,7 @@
         }
 
         /**
-         * @return mixed
+         * @return $this
          */
         public static function getInstance()
         {
@@ -66,7 +62,7 @@
          * @param null $params
          * @param bool $multiple
          *
-         * @return array|mixed|string
+         * @return object|array
          */
         public function readQuery($query, $params = null, $multiple = true)
         {
@@ -79,7 +75,6 @@
                     $result = $sth->fetch(\PDO::FETCH_OBJ);
                 }
             } catch (\PDOException $e) {
-                // handle exceptions
                 $result = json_encode(
                     array (
                         'code' => $e->getCode(),
