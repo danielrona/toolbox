@@ -97,7 +97,7 @@
             try {
                 $sth = $this->dbh->prepare($query);
                 $sth->execute($params);
-                $result = $this->dbh->lastInsertId();
+                $result = (int) $this->dbh->lastInsertId();
             } catch (\PDOException $e) {
                 $result = json_encode(
                     array (
